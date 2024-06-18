@@ -1,110 +1,73 @@
-🚀
-# Ung dung callbike - dành cho khách hàng sử dụng
+# Hướng Dẫn Sử Dụng Callbike-client-app
 
+## Giới Thiệu
+Dự án này sử dụng các dịch vụ mã nguồn mở như OpenStreetMap, OSRM API, OpenCage API,... thay thế cho các dịch vụ như Google API, Mapbox API.
 
-## Demo
-Xem bản chạy thử về ứng dụng callbike_client tại [Demo Link](https://).
+Callbike-client-app cho phép đặt xe, kết nối hành khách với tài xế. Ứng dụng được triển khai với các chức năng như:
 
-## 👩‍💻 Built with
-- [Expo](https://expo.io/)
-- [Expo Router V2](https://blog.expo.dev/introducing-expo-router-v2-3850fd5c3ca1)
-- [TypeScript](https://www.typescriptlang.org/)
-- [JavaScript]
+- Đăng nhập
+- Đăng ký tài khoản
+- Chọn xe
+- Tính toán lộ trình
+- Thời gian dự kiến
+- Nhắn tin thời gian thực với tài xế
+- Đánh giá chuyến đi
+- Thanh toán trực tuyến (không cập nhật trong bản này)
 
-## 🌟 Features
+Mình sử dụng Expo framework để phát triển ứng dụng này. Trong tài liệu này, mình sẽ trình bày cấu trúc thư mục theo định tuyến tệp được Expo gợi ý.
 
+## Bắt Đầu Dự Án
 
-## 📷 Screenshots
+### Yêu Cầu Hệ Thống:
+- Node.js (LTS)
+- macOS, Windows (Powershell và WSL 2), hoặc Linux
+- Expo go SDK 51
 
-Please find the screenshots in the `client-app-screenshots` folder.
+### Tải Về Dự Án
+1. **Clone Dự Án**
+   ```bash
+   git clone https://github.com/DcViet/callbike-client.git
+   // chuyển sang nhánh client-app
+   git checkout client-app
+   ```
 
-## 🚀 Getting Started
+2. **Cài Đặt Dependencies**
+   ```bash
+   npm install
+   ```
 
-### Prerequisites
+3. **Cấu Hình Biến Môi Trường**
+   - Tạo file `.env` trong thư mục gốc và cấu hình các biến môi trường cần thiết như `PORT`, `DATABASE_URL`, `JWT_SECRET`, v.v.
 
-- [Node.js](https://nodejs.org/)
-- [Expo CLI](https://expo.io/tools#cli)
+## Khởi Chạy Ứng Dụng
 
-### Installation
+Bạn có thể xem trực tiếp ứng dụng từ thiết bị của bạn thông qua Expo Go.
+
+### 1. Khởi Động Server Phát Triển
+Để khởi động server phát triển, chạy lệnh sau:
+```bash
+npx expo start
+```
+
+### 2. Mở Ứng Dụng Trên Thiết Bị
+Sau khi chạy lệnh trên, bạn sẽ thấy mã QR xuất hiện trong terminal. Quét mã QR này để mở ứng dụng trên thiết bị của bạn.
+
+- Nếu bạn sử dụng Android Emulator hoặc iOS Simulator, bạn có thể nhấn `a` hoặc `i` để mở ứng dụng.
+
+**Lưu Ý:** Đảm bảo rằng máy tính và thiết bị của bạn đang sử dụng cùng một mạng Wi-Fi. Nếu vẫn không hoạt động, có thể do cấu hình router — điều này thường gặp trên mạng công cộng. Bạn có thể khắc phục bằng cách chọn loại kết nối Tunnel khi khởi động server phát triển, sau đó quét lại mã QR.
 
 ```bash
-# Clone the repository
-
-## Using HTTPS
-git clone ...
-
-# Navigate into the directory
-cd client-app-ui
-
-# Install dependencies
-npm install
-
-# Start the Expo development server
-expo start
+npx expo start --tunnel
 ```
+Sử dụng loại kết nối Tunnel sẽ làm cho ứng dụng tải lại chậm hơn so với LAN hoặc Local. Vì vậy, nên tránh sử dụng Tunnel khi có thể. Bạn có thể cài đặt và sử dụng emulator hoặc simulator để tăng tốc phát triển nếu cần sử dụng Tunnel để truy cập máy tính từ thiết bị khác trên mạng của bạn.
 
-## 🌈 Applying Fonts in your application
+### 3. Thử nghiệm Ứng Dụng
 
-You already have the font loaded in your application, now you can apply the font in your application.
+![Cấu trúc thư mục](./folder-structure.png)
 
-Add the font name in the `gluestack.config.js` file in the `fonts` object.
+## Kết Luận
+Với các bước trên, bạn đã có thể bắt đầu phát triển và thử nghiệm Callbike-client-app.
 
-```javascript
-fonts: {
-  heading: "inter",
-  body: "inter",
-  mono: "monospace",
-},
-```
+Ứng dụng này mình đã đăng kí các tài khoản cá nhân để có thể sử dụng API, bạn có thể thay đổi các key API theo tài khoản riêng của bạn. Tuy nhiên để hỗ trợ cho bạn trải nghiệm ứng dụng thuận tiện, mình đang dùng các key API của mình, mong bạn có thể học thêm điều gì mới mẻ trên hành trình của bạn.
 
-## 📖 Documentation
-
-For a deep dive into the components, structure, and configurations, please refer to our [detailed documentation](https://ui.gluestack.io/docs/getting-started/installation).
-
-## 🧪 Testing
-
-We've set up Jest as the testing framework for this project to ensure the reliability of your codebase. You can run the tests using the following commands:
-
-### Setting Up Jest with Expo
-
-To install `jest-expo` in your project, run the following command:
-
-```bash
-npx expo install jest-expo jest
-```
-
-### Writing Test Cases
-
-To write your own test cases, refer to the [Expo documentation on unit testing](https://docs.expo.dev/develop/unit-testing/) for comprehensive guidance and best practices.
-
-### Running Tests
-
-To run tests, use the following command:
-
-```bash
-npm run test
-```
-
-We've added an example of a Jest snapshot test case for the `SplashScreen` component. This test case uses Jest's `jest.mock` to mock a dependency and then renders the `SplashScreen` component within a `StyledProvider`. Finally, it asserts that the rendered component matches the previously saved snapshot.
-
-You can add more test cases as needed for your other components and features. This section serves as a starting point for incorporating testing into your project using Jest.
-
-## 🙌 Contributing
-
-We welcome contributions! Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo, make changes and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-## ❤️ Acknowledgments
-
-```
-
-```
+<a href="https://www.buymeacoffee.com/tranducviez" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Tặng ly cà phê" style="height: 60px !important;width: 217px !important;" ></a>
